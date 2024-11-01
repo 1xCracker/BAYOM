@@ -1,0 +1,6 @@
+@BAYOM.WEBAPI_HostAddress = http://localhost:5190
+
+GET {{BAYOM.WEBAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
