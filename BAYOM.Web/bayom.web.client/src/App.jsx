@@ -1,51 +1,34 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Pages/Home'
+import About from './Pages/About'
+import Collection from './Pages/Collection'
+import Contact from './Pages/Contact'
+import Product from './Pages/Product'
+import Cart from './Pages/Cart'
+import Login from './Pages/Login'
+import PlaceOrder from './Pages/PlaceOrder'
+import Order from './Pages/Order'
+import Navbar from './components/navbar'
 function App() {
-    const [forecasts, setForecasts] = useState();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table  className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
     return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+        <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+            <Navbar />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/collection' element={<Collection />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/product' element={<Product />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/place-order' element={<PlaceOrder />} />
+                <Route path='/order' element={<Order />} />
 
-            
+
+            </Routes>
         </div>
-    );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
+    )
 }
 
-export default App;
+export default App
