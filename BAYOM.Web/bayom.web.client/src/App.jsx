@@ -12,7 +12,7 @@ import Order from './Pages/Order'
 import Navbar from './components/navbar'
 function App() {
     return (
-        <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+        <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
             <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -24,8 +24,6 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/place-order' element={<PlaceOrder />} />
                 <Route path='/order' element={<Order />} />
-
-
             </Routes>
         </div>
     )
