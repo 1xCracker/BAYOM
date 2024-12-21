@@ -9,7 +9,7 @@ import asus_vivobook_15 from './asus_vivobook_15.jpg'
 import asus_zenbook_14 from './asus_zenbook_14.jpg'
 import casper_excalibur from './casper_excalibur.jpg'
 import huawei_matebook_14 from './huawei_matebook_14.jpg'
-import lenova_ideapad_s_3 from './lenova_ideapad_s_3.jpg'
+import lenovaideapad_s_3 from './lenova_ideapad_s_3.jpg'
 import macbook_air_mly13tu from './macbook-air_mly13tu.jpg'
 import msi_thin_15 from './msi_thin_15.jpg'
 import kasa_1 from './kasa_1.jpg'
@@ -35,6 +35,9 @@ import contact_img from './contact_img.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
+import about_us from './about_us.svg'
+import about_us_1 from './about_us_1.svg'
+import contact from './contact.svg'
 
 export const assets = {
     logo,
@@ -50,20 +53,22 @@ export const assets = {
     bin_icon,
     support_img,
     menu_icon,
-
+    about_us,
     contact_img,
     razorpay_logo,
     stripe_logo,
-    cross_icon
+    cross_icon,
+    about_us_1,
+    contact
 }
 
 export const products = [
     {
-        _id: "aaaaa",
+        id: 1,
         name: "Lenovo Ideapad Slim 3 12.Nesil Core i5 12450H-8Gb-512Gb Ssd-15.6inc-W11",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 100,
-        image: [lenova_ideapad_s_3],
+        image: [lenovaideapad_s_3],
         category: "Notebook",
         subCategory: "Bilgisayar",
         sizes: ["S", "M", "L"],
@@ -71,67 +76,67 @@ export const products = [
         bestseller: true
     },
     {
-        _id: "aaaab",
+        id: 2,
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 200,
         image: [anakart_1],
         category: "Anakart",
-        subCategory: "Bilgisayar",
+        subCategory: "Bilgisayar-Bileseni",
         sizes: ["M", "L", "XL"],
         date: 1716621345448,
         bestseller: true
     },
     {
-        _id: "aaaac",
+        id: 3,
         name: "Girls Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 220,
         image: [anakart_2],
         category: "Anakart",
-        subCategory: "Bilgisayar",
+        subCategory: "Bilgisayar-Bileseni",
         sizes: ["S", "L", "XL"],
         date: 1716234545448,
         bestseller: true
     },
     {
-        _id: "aaaad",
+        id: 4,
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 110,
         image: [anakart_3],
         category: "Anakart",
-        subCategory: "Bilgisayar",
+        subCategory: "Bilgisayar-Bileseni",
         sizes: ["S", "M", "XXL"],
         date: 1716621345448,
         bestseller: true
     },
     {
-        _id: "aaaae",
+        id: 5,
         name: "Women Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 130,
         image: [anakart_4],
         category: "Anakart",
-        subCategory: "Bilgisayar",
+        subCategory: "Bilgisayar-Bileseni",
         sizes: ["M", "L", "XL"],
         date: 1716622345448,
         bestseller: true
     },
     {
-        _id: "aaaaf",
+        id: 6,
         name: "Girls Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 140,
         image: [anakart_5],
         category: "Anakart",
-        subCategory: "Bilgisayar",
+        subCategory: "Bilgisayar-Bileseni",
         sizes: ["S", "L", "XL"],
         date: 1716623423448,
         bestseller: true
     },
     {
-        _id: "aaaag",
+        id: 7,
         name: "Men Tapered Fit Flat-Front Trousers",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 190,
@@ -143,7 +148,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaah",
+        id: 8,
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 140,
@@ -155,7 +160,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaai",
+        id: 9,
         name: "Girls Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 100,
@@ -167,7 +172,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaaj",
+        id: 10,
         name: "Men Tapered Fit Flat-Front Trousers",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 110,
@@ -179,7 +184,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaak",
+        id: 11,
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 120,
@@ -191,7 +196,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaal",
+        id: 12,
         name: "Men Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 150,
@@ -203,7 +208,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaam",
+        id: 13,
         name: "Women Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 130,
@@ -215,7 +220,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaan",
+        id: 14,
         name: "Boy Round Neck Pure Cotton T-shirt",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 160,
@@ -227,7 +232,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaao",
+        id: 15,
         name: "Men Tapered Fit Flat-Front Trousers",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 140,
@@ -239,7 +244,7 @@ export const products = [
         bestseller: false
     },
     {
-        _id: "aaaap",
+        id: 16,
         name: "Girls Round Neck Cotton Top",
         description: "A lightweight, usually knitted, pullover shirt, close-fitting and with a round neckline and short sleeves, worn as an undershirt or outer garment.",
         price: 170,
