@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import React from "react";
+
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -58,6 +58,7 @@ function ShopContextProvider(props) {
                     }
                 }
                 catch (error) {
+                    console.log(error)
                 }
             }
         }
@@ -83,7 +84,7 @@ function ShopContextProvider(props) {
                     }
                 }
                 catch (error) {
-
+                    console.log(error)
                 }
             }
             console.log(totalAmount)
@@ -100,7 +101,7 @@ function ShopContextProvider(props) {
 
     return (
         <ShopContext.Provider value={value}>
-            {props.children}
+            {props}
         </ShopContext.Provider>
     )
     async function productData() {

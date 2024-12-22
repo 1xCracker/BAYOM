@@ -23,12 +23,35 @@ namespace BAYOM.Web.Server.Controllers
 			_mapper = mapper;
 		}
 
-		[HttpGet]
-		public async Task<IEnumerable<ProductDto>> GetLastestProduct()
+		[HttpGet("latest", Name ="GetLastestProducts")]
+		public async Task<ActionResult<IEnumerable<ProductDto>>> GetLastestProduct()
 		{
 			var products= await _productService.GetProductsLastestAsync();
+			if (products == null)
+			{
+				return NotFound();
+			}
 			var productsDto =_mapper.Map<IEnumerable<ProductDto>>(products);
-			return productsDto;
+			if (productsDto == null)
+			{
+				return NotFound();
+			}
+			return Ok(productsDto);
+		}
+		[HttpGet("all",Name ="GetAllProducts")]
+		public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProduct()
+		{
+			var product = await _service.GetAllAsync();
+			if (product == null) 
+			{
+				return NotFound();
+			}
+			var productDto = _mapper.Map<IEnumerable<ProductDto>>(product);
+			if (productDto == null)
+			{
+				return NotFound();
+			}
+			return Ok(productDto);
 		}
 	}
 }

@@ -62,7 +62,7 @@ public partial class ModelContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseOracle("User Id=BAYOM; password=123; data source=localhost:1521/DENEME.omerbaykoca.com");
+        => optionsBuilder.UseOracle("User Id=bayom;password=123;data source=localhost:1521/DENEME.omerbaykoca.com");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -231,14 +231,6 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .HasColumnName("CUSTOMERSTATUS");
-            entity.Property(e => e.Userroleid)
-                .HasPrecision(10)
-                .HasDefaultValueSql("6")
-                .HasColumnName("USERROLEID");
-
-            entity.HasOne(d => d.Userrole).WithMany(p => p.Customers)
-                .HasForeignKey(d => d.Userroleid)
-                .HasConstraintName("CUSTOMER_USERROLE_ID_FK");
         });
 
         modelBuilder.Entity<Department>(entity =>
@@ -720,14 +712,17 @@ public partial class ModelContext : DbContext
             entity.Property(e => e.Employeeid)
                 .HasPrecision(10)
                 .HasColumnName("EMPLOYEEID");
-            entity.Property(e => e.Username)
-                .HasMaxLength(20)
+            entity.Property(e => e.Useremail)
+                .HasMaxLength(50)
                 .IsUnicode(false)
-                .HasColumnName("USERNAME");
+                .HasColumnName("USEREMAIL");
             entity.Property(e => e.Userpassword)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("USERPASSWORD");
+            entity.Property(e => e.Userrole)
+                .HasPrecision(10)
+                .HasColumnName("USERROLE");
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Users)
                 .HasForeignKey(d => d.Customerid)
@@ -736,6 +731,11 @@ public partial class ModelContext : DbContext
             entity.HasOne(d => d.Employee).WithMany(p => p.Users)
                 .HasForeignKey(d => d.Employeeid)
                 .HasConstraintName("USER_EMPLOYEE_ID_FK");
+
+            entity.HasOne(d => d.UserroleNavigation).WithMany(p => p.Users)
+                .HasForeignKey(d => d.Userrole)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("USER_USERROLE_ID_FK");
         });
 
         modelBuilder.Entity<Userrole>(entity =>
