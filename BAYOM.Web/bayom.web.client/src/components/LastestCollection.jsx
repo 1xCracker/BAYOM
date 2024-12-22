@@ -10,6 +10,7 @@ function LastestCollection() {
     const { products } = useContext(ShopContext);
 
     const [lastestProduct, setLastestProduct] = useState([]);
+
     useEffect(() => {
         setLastestProduct(products.slice(0, 10));
     }, []);

@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import React from "react";
 import { products } from "../assets/assets";
 import { toast } from "react-toastify";
@@ -12,8 +12,13 @@ function ShopContextProvider(props) {
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false)
     const [cartItems, setCartItems] = useState({});
+    const [product, setProduct] = useState([]);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        productData();
+        
+    }, []);
 
     const addToCart = async (itemId, size) => {
         if (!size) {
@@ -90,7 +95,7 @@ function ShopContextProvider(props) {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
         cartItems, addToCart, getCartCount, updateQuantity
-        , getCartAmount, navigate
+        , getCartAmount, navigate, product
     }
 
     return (
@@ -98,5 +103,12 @@ function ShopContextProvider(props) {
             {props.children}
         </ShopContext.Provider>
     )
+    async function productData() {
+        const response = await fetch('https://localhost:7021/api/Products');
+        const data = await response.json();
+
+        setProduct(data);
+    }
 }
+
 export default ShopContextProvider;

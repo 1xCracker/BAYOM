@@ -13,20 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.60" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BAYOM.BL\BAYOM.BL.csproj" />
-    <ProjectReference Include="..\..\BAYOM.DAL\BAYOM.DAL.csproj" />
     <ProjectReference Include="..\..\BAYOM.EL\BAYOM.EL.csproj" />
     <ProjectReference Include="..\bayom.web.client.admin\bayom.web.client.admin.esproj">
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>

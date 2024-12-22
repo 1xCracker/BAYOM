@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BAYOM.DAL.Abstract
 {
-    public interface IRepository<T> where T : class ,new()
+    public interface IRepository<T> where T : class 
     {
 
         IQueryable<T> GetAll();
         IQueryable<T> GetByQuery(Expression<Func<T, bool>> expression);
         Task<T> GetById(int id);
+        Task AddAsync(T entity);
+
         void Delete(T entity);
         void Update(T entity);
 

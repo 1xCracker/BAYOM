@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BAYOM.DAL.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class, new()
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ModelContext _context;
         private readonly DbSet<T> _dbSet;
@@ -15,7 +15,12 @@ namespace BAYOM.DAL.Repository
             _dbSet = _context.Set<T>();
         }
 
-        public void Delete(T entity)
+		public async Task AddAsync(T entity)
+		{
+			await _dbSet.AddAsync(entity);
+		}
+
+		public void Delete(T entity)
         {
             _dbSet.Remove(entity);
         }
