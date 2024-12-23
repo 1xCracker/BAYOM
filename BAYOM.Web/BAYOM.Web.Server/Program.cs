@@ -22,6 +22,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
 builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 builder.Services.AddScoped(typeof(IServices<>), typeof(Service<>));
+builder.Services.AddScoped(typeof(ICategorySercive),typeof(CategoryService));
 
 
 builder.Services.AddAutoMapper(typeof(MapProfile));

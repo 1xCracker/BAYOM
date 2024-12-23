@@ -14,12 +14,12 @@ namespace BAYOM.Web.Server.Controllers
 	public class ProductsController : ControllerBase
 	{
 		private readonly IProductService _productService;
-		private readonly IServices<Product> _service;
+		private readonly IServices<Product> _serviceProduct;
 		private readonly IMapper _mapper;
 		public ProductsController(IProductService productService, IServices<Product> service,IMapper mapper)
 		{
 			_productService = productService;
-			_service = service;
+			_serviceProduct = service;
 			_mapper = mapper;
 		}
 
@@ -41,7 +41,7 @@ namespace BAYOM.Web.Server.Controllers
 		[HttpGet("all",Name ="GetAllProducts")]
 		public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProduct()
 		{
-			var product = await _service.GetAllAsync();
+			var product = await _serviceProduct.GetAllAsync();
 			if (product == null) 
 			{
 				return NotFound();
@@ -53,5 +53,6 @@ namespace BAYOM.Web.Server.Controllers
 			}
 			return Ok(productDto);
 		}
+
 	}
 }

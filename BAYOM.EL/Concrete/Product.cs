@@ -21,6 +21,8 @@ public partial class Product
 
     public decimal? ProductpriceS { get; set; }
 
+    public byte? Topcategoryid { get; set; }
+
     public virtual ICollection<Cartdetail> Cartdetails { get; set; } = new List<Cartdetail>();
 
     public virtual Category? Category { get; set; }
@@ -34,6 +36,8 @@ public partial class Product
     public virtual Productbrand? Productbrand { get; set; }
 
     public virtual ICollection<Productserino> Productserinos { get; set; } = new List<Productserino>();
+
+    public virtual Topcategory? Topcategory { get; set; }
 
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 

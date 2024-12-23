@@ -50,6 +50,8 @@ public partial class ModelContext : DbContext
 
     public virtual DbSet<Productstatus> Productstatuses { get; set; }
 
+    public virtual DbSet<Topcategory> Topcategories { get; set; }
+
     public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<Transactionserino> Transactionserinos { get; set; }
@@ -140,6 +142,13 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("CATEGORYNAME");
+            entity.Property(e => e.Topcategoryid)
+                .HasPrecision(2)
+                .HasColumnName("TOPCATEGORYID");
+
+            entity.HasOne(d => d.Topcategory).WithMany(p => p.Categories)
+                .HasForeignKey(d => d.Topcategoryid)
+                .HasConstraintName("TOPCATEGORY_ID_FK");
         });
 
         modelBuilder.Entity<Combination>(entity =>
@@ -161,7 +170,7 @@ public partial class ModelContext : DbContext
                 .HasPrecision(10)
                 .HasColumnName("FORMULAID");
             entity.Property(e => e.Serino)
-                .HasMaxLength(12)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("SERINO");
 
@@ -485,6 +494,9 @@ public partial class ModelContext : DbContext
             entity.Property(e => e.ProductpriceS)
                 .HasColumnType("NUMBER(10,2)")
                 .HasColumnName("PRODUCTPRICE_S");
+            entity.Property(e => e.Topcategoryid)
+                .HasPrecision(2)
+                .HasColumnName("TOPCATEGORYID");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.Categoryid)
@@ -493,6 +505,10 @@ public partial class ModelContext : DbContext
             entity.HasOne(d => d.Productbrand).WithMany(p => p.Products)
                 .HasForeignKey(d => d.Productbrandid)
                 .HasConstraintName("SYS_C007665");
+
+            entity.HasOne(d => d.Topcategory).WithMany(p => p.Products)
+                .HasForeignKey(d => d.Topcategoryid)
+                .HasConstraintName("P_TOPCATEGORY_ID_FK");
         });
 
         modelBuilder.Entity<Productbrand>(entity =>
@@ -566,6 +582,22 @@ public partial class ModelContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("PRODUCTSATUSNAME");
+        });
+
+        modelBuilder.Entity<Topcategory>(entity =>
+        {
+            entity.HasKey(e => e.Topcategoryid).HasName("SYS_C007877");
+
+            entity.ToTable("TOPCATEGORIES");
+
+            entity.Property(e => e.Topcategoryid)
+                .HasPrecision(2)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("TOPCATEGORYID");
+            entity.Property(e => e.Topcategoryname)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("TOPCATEGORYNAME");
         });
 
         modelBuilder.Entity<Transaction>(entity =>

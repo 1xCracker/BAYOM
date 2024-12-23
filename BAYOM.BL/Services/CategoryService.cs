@@ -1,6 +1,7 @@
 ﻿using BAYOM.BL.Abstract;
 using BAYOM.DAL.Abstract;
 using BAYOM.EL.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,10 @@ namespace BAYOM.BL.Services
 		{
 			_repository = repository;
 		}
-		public Task<IEnumerable<Category>> GetCategory(int id)
+		public async Task<IEnumerable<Category>> GetCategory(int id)
 		{
-			throw new NotImplementedException();
+			var category = await _repository.GetByQuery(x => x.Topcategoryid==id).ToListAsync();
+			return category;
 		}
 	}
 }

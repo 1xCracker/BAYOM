@@ -9,5 +9,9 @@ public partial class Category
 
     public string? Categoryname { get; set; }
 
+    public byte? Topcategoryid { get; set; }
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
+    public virtual Topcategory? Topcategory { get; set; }
 }
