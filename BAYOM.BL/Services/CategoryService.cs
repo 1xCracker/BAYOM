@@ -1,4 +1,6 @@
-﻿using BAYOM.BL.Abstract;
+﻿using AutoMapper;
+using BAYOM.BL.Abstract;
+using BAYOM.BL.Dto_s.CategoryAndBrandDto_s;
 using BAYOM.DAL.Abstract;
 using BAYOM.EL.Concrete;
 using Microsoft.EntityFrameworkCore;
@@ -13,13 +15,15 @@ namespace BAYOM.BL.Services
 	public class CategoryService : ICategorySercive
 	{
 		private readonly IRepository<Category> _repository;
+
 		public CategoryService(IRepository<Category> repository)
 		{
 			_repository = repository;
+			
 		}
 		public async Task<IEnumerable<Category>> GetCategory(int id)
 		{
-			var category = await _repository.GetByQuery(x => x.Topcategoryid==id).ToListAsync();
+			var category = await _repository.GetByQuery(x => x.Topcategoryid == id).ToListAsync();
 			return category;
 		}
 	}

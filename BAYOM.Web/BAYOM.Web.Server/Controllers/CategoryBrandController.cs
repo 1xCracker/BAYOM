@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BAYOM.BL.Abstract;
+using BAYOM.BL.Dto_s.CategoryAndBrandDto_s;
 using BAYOM.BL.Services;
 using BAYOM.EL.Concrete;
 using Microsoft.AspNetCore.Http;
@@ -14,22 +15,29 @@ namespace BAYOM.Web.Server.Controllers
 		private readonly IServices<Productbrand> _serviceBrand;
 		private readonly IServices<Topcategory> _serviceTopCategory;
 		private readonly ICategorySercive _categorySercive;
-		public CategoryBrandController(IServices<Productbrand> productBrand, IServices<Topcategory> topCategory, ICategorySercive categorySercive)
+		private readonly IMapper _mapper;
+		public CategoryBrandController(IServices<Productbrand> productBrand, IServices<Topcategory> topCategory, ICategorySercive categorySercive, IMapper mapper)
 		{
 			_serviceBrand = productBrand;
 			_serviceTopCategory = topCategory;
 			_categorySercive = categorySercive;
+			_mapper = mapper;
 		}
 
 		[HttpGet("ProductBrand", Name = "GetAllBrand")]
-		public async Task<ActionResult<IEnumerable<Productbrand>>> GetAllBrand()
+		public async Task<ActionResult<IEnumerable<ProductBrandDto>>> GetAllBrand()
 		{
 			var brand = await _serviceBrand.GetAllAsync();
 			if (brand == null)
 			{
 				return NotFound();
 			}
-			return Ok(brand);
+			var brandDto =_mapper.Map<IEnumerable<ProductBrandDto>>(brand);
+			if (brandDto == null)
+			{
+				return NotFound();	
+			}
+			return Ok(brandDto);
 		}
 		[HttpGet("TopCategory", Name = "GetAllTopCategory")]
 		public async Task<ActionResult<IEnumerable<Topcategory>>> GetAllTopCategory()
@@ -39,7 +47,12 @@ namespace BAYOM.Web.Server.Controllers
 			{
 				return NotFound();
 			}
-			return Ok(topCategory);
+			var topCategoryDto = _mapper.Map<IEnumerable<Topcategory>>(topCategory);
+			if (topCategoryDto == null)
+			{
+				return NotFound();
+			}
+			return Ok(topCategoryDto);
 		}
 
 		[HttpPost("TopCategory")]
@@ -50,7 +63,12 @@ namespace BAYOM.Web.Server.Controllers
 			{
 				return Unauthorized("İlgili Category Bulunamadı");
 			}
-			return Ok(category);
+			var categoryDto = _mapper.Map<IEnumerable<Category>>(category);
+			if (categoryDto == null)
+			{
+				return Unauthorized("Mapleme işlemi başarısız");
+			}
+			return Ok(categoryDto);
 		}
 	}
 }
