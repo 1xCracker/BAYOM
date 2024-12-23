@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useState } from 'react';
-import React from 'react';
+
 import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 import ProductItem from './ProductItem';
@@ -19,7 +19,7 @@ function LastestCollection() {
             <div className='text-center py-8 text-3xl'>
                 <Title text1={'LASTEST '} text2={'COLLECTION'} />
                 <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-                    BayoTech CLUB'a üye olun ve özel avantajlardan yararlanmaya başlayın.
+                    BayoTech CLUB a üye olun ve özel avantajlardan yararlanmaya başlayın.
                 </p>
             </div>
             {/* Rendering Products */}

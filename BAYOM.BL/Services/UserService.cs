@@ -29,13 +29,14 @@ namespace BAYOM.BL.Services
 
 		public async Task<User> Authenticate(string email, string password)
 		{
-			var user = await _repositoryUser.GetByQuery(x => x.Useremail == username).FirstOrDefaultAsync();
+			var user = await _repositoryUser.GetByQuery(x => x.Useremail == email).FirstOrDefaultAsync();
 			
 			if(user == null )
 			{
 				return null;
 			}
 			var girilenSifre = Encryption.sifreSifrele(password);
+			Console.WriteLine(girilenSifre);
             if (user.Userpassword != girilenSifre)
             {
 				return null;

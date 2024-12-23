@@ -17,7 +17,7 @@ function ShopContextProvider(props) {
 
     useEffect(() => {
         productData();
-        
+
     }, []);
 
     const addToCart = async (itemId, size) => {
@@ -74,7 +74,6 @@ function ShopContextProvider(props) {
     const getCartAmount = () => {
         let totalAmount = 0;
         for (const items in cartItems) {
-
             let itemInfo = products.find((product) => product.id == items);
             console.log(itemInfo)
             for (const item in cartItems[items]) {
@@ -101,11 +100,11 @@ function ShopContextProvider(props) {
 
     return (
         <ShopContext.Provider value={value}>
-            {props}
+            {props.children}
         </ShopContext.Provider>
     )
     async function productData() {
-        const response = await fetch('https://localhost:7021/api/Products');
+        const response = await fetch('https://localhost:7021/api/Products/latest');
         const data = await response.json();
 
         setProduct(data);

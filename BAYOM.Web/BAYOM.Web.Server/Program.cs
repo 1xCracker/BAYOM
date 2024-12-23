@@ -1,5 +1,6 @@
 
 using BAYOM.BL.Abstract;
+using BAYOM.BL.Concrete.Token;
 using BAYOM.BL.Mapping;
 using BAYOM.BL.Services;
 using BAYOM.DAL.Abstract;
@@ -15,9 +16,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<JwtTokenGenerator>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IProductService), typeof(ProductService));
+builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 builder.Services.AddScoped(typeof(IServices<>), typeof(Service<>));
 
 
