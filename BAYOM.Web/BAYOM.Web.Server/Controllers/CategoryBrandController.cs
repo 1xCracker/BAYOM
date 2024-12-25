@@ -40,14 +40,14 @@ namespace BAYOM.Web.Server.Controllers
 			return Ok(brandDto);
 		}
 		[HttpGet("TopCategory", Name = "GetAllTopCategory")]
-		public async Task<ActionResult<IEnumerable<Topcategory>>> GetAllTopCategory()
+		public async Task<ActionResult<IEnumerable<TopCategoryDto>>> GetAllTopCategory()
 		{
 			var topCategory = await _serviceTopCategory.GetAllAsync();
 			if (topCategory == null)
 			{
 				return NotFound();
 			}
-			var topCategoryDto = _mapper.Map<IEnumerable<Topcategory>>(topCategory);
+			var topCategoryDto = _mapper.Map<IEnumerable<TopCategoryDto>>(topCategory);
 			if (topCategoryDto == null)
 			{
 				return NotFound();
@@ -56,14 +56,14 @@ namespace BAYOM.Web.Server.Controllers
 		}
 
 		[HttpPost("TopCategory")]
-		public async Task<ActionResult<IEnumerable<Category>>> GetCategory(int id)
+		public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategory(int id)
 		{
 			var category = await _categorySercive.GetCategory(id);
 			if (category == null)
 			{
 				return Unauthorized("İlgili Category Bulunamadı");
 			}
-			var categoryDto = _mapper.Map<IEnumerable<Category>>(category);
+			var categoryDto = _mapper.Map<IEnumerable<CategoryDto>>(category);
 			if (categoryDto == null)
 			{
 				return Unauthorized("Mapleme işlemi başarısız");

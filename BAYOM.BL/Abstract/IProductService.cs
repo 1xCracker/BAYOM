@@ -12,7 +12,6 @@ namespace BAYOM.BL.Abstract
 	public interface IProductService
 	{
 		Task<IEnumerable<Product>> GetProductsLastestAsync();
-	
-
-	}
+        Task<bool> AnyAsync(int id);
+    }
 }

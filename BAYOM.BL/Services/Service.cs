@@ -19,12 +19,20 @@ namespace BAYOM.BL.Services
             _repository = repository;
             _unitOfWork = unitOfWork;
         }
-        public async Task AddAsync(T entity)
+        public async Task<bool> AddAsync(T entity)
         {
+            try { 
             await _repository.AddAsync(entity);
             await _unitOfWork.CommitAsync();
-            
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
+
+   
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {   
@@ -39,16 +47,32 @@ namespace BAYOM.BL.Services
             return entity;
         }
 
-        public async Task RemoveAsync(T entity)
+        public async Task<bool> RemoveAsync(T entity)
         {
-             _repository.Delete(entity);
-            await _unitOfWork.CommitAsync();
+            try { 
+                _repository.Delete(entity);
+                await _unitOfWork.CommitAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
-           _repository.Update(entity);
-            await _unitOfWork.CommitAsync();
+            try {
+                 _repository.Update(entity);
+                 await _unitOfWork.CommitAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
  

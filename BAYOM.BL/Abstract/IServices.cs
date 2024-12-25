@@ -11,10 +11,10 @@ namespace BAYOM.BL.Abstract
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetById(int id);
-    
-        Task AddAsync(T entity);
-        Task RemoveAsync(T entity);
-        Task UpdateAsync(T entity);
+       
+        Task<bool> AddAsync(T entity);
+        Task<bool> RemoveAsync(T entity);
+        Task<bool> UpdateAsync(T entity);
 
 
     }

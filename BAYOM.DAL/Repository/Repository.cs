@@ -1,6 +1,7 @@
 ﻿using BAYOM.DAL.Abstract;
 using BAYOM.EL.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 
 namespace BAYOM.DAL.Repository
@@ -20,7 +21,12 @@ namespace BAYOM.DAL.Repository
 			await _dbSet.AddAsync(entity);
 		}
 
-		public void Delete(T entity)
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+        {
+           return await _dbSet.AnyAsync(expression);
+        }
+
+        public void Delete(T entity)
         {
             _dbSet.Remove(entity);
         }

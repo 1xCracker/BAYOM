@@ -23,5 +23,6 @@ namespace BAYOM.BL.Dto_s.ProductDto_s
 		public string? Productdescription { get; set; }
 
 		public decimal? ProductpriceS { get; set; }
-	}
+        public byte? Topcategoryid { get; set; }
+    }
 }

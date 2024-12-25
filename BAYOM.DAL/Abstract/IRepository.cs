@@ -14,7 +14,7 @@ namespace BAYOM.DAL.Abstract
         IQueryable<T> GetByQuery(Expression<Func<T, bool>> expression);
         Task<T> GetById(int id);
         Task AddAsync(T entity);
-
+        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         void Delete(T entity);
         void Update(T entity);
 
