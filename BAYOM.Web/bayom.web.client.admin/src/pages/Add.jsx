@@ -21,8 +21,8 @@ function Add() {
             formData.append("productname", name)
             formData.append("productdescription", description)
             formData.append("productprices", price)
-            formData.append("category", category)
-            formData.append("topcategory", topCategory)
+            formData.append("categoryid", category)
+            formData.append("topcategoryid", topCategory)
             formData.append("productbrand", productBrand)
             formData.append("image", image1)
 
@@ -76,10 +76,7 @@ function Add() {
                         <option>Category</option>
                     </select>
                 </div>
-                <div>
-                    <p className='mb-2'>Product Price</p>
-                    <input className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
-                </div>
+               
             </div>
             <button type='submit' className='w-28 py-3 mt-4  bg-black text-white'>ADD</button>
         </form>

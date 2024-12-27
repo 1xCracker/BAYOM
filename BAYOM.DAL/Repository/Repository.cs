@@ -23,7 +23,8 @@ namespace BAYOM.DAL.Repository
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-           return await _dbSet.AnyAsync(expression);
+            bool productExists = await _dbSet.AnyAsync(expression);
+            return productExists;
         }
 
         public void Delete(T entity)

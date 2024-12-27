@@ -25,7 +25,7 @@ function BestSeller() {
             </div>
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
                 {bestSeller.map((item, index) => (
-                    <ProductItem key={index} id={item.productid} image={(item.image)} name={item.productname} price={item.productpriceB} />
+                    <ProductItem key={index} id={item.productid} image={(item.productimage)} name={item.productname} price={item.productpriceB} />
                 ))}
             </div>
         </div>
