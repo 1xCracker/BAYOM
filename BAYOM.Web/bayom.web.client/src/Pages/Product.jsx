@@ -3,21 +3,22 @@ import { useParams } from 'react-router'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import RelatedProduct from '../components/RelatedProduct';
+import { getImageURL } from '../utils/image-util';
 
 
 function Product() {
-    const { productId } = useParams();
-    const { products, currency, addToCart } = useContext(ShopContext);
+    const { productid } = useParams();
+    const { product, currency, addToCart } = useContext(ShopContext);
     const [productData, setProducData] = useState(false);
     const [image, setImage] = useState('')
     const [size, setSize] = useState('')
 
     const fetchProductData = async () => {
-        products.map((item) => {
+        product.map((item) => {
 
-            if (item.id == productId) {
+            if (item.productid == productid) {
                 setProducData(item)
-                setImage(item.image[0])
+                setImage(getImageURL(item.productimage))
                 return null;
             }
 
@@ -26,7 +27,7 @@ function Product() {
     }
     useEffect(() => {
         fetchProductData();
-    }, [productId])
+    }, [productid, product])
     return productData ? (
         <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
             {/*-------- Product Data -----------*/}
@@ -35,20 +36,20 @@ function Product() {
                 <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
                     <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
                         {
-                            productData.image.map((item, index) => (
-                                <img onClick={() => setImage(item)} src={item} key={index} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
-                            ))
+
+                            <img onClick={() => setImage(getImageURL(productData.productimage))} src={getImageURL(productData.productimage)} key={productid} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
+
                         }
                     </div>
                     <div className='w-full sm:w-[90%]'>
-                        <img className='w-full h-auto ' src={image} alt={productData.name} />
+                        <img className='w-full h-auto ' src={image} alt={productData.productname} />
                     </div>
 
                 </div>
 
                 {/* ----------------------product Info ------------------- */}
                 <div className='felx-1'>
-                    <h1 className='font-medium text-2xl mt-2'>{productData.name}</h1>
+                    <h1 className='font-medium text-2xl mt-2'>{productData.productname}</h1>
                     <div className='flex items-center gap-1 mt-2'>
                         <img src={assets.star_icon} className='w-3 ' />
                         <img src={assets.star_icon} className='w-3 ' />
@@ -57,22 +58,22 @@ function Product() {
                         <img src={assets.star_dull_icon} className='w-3 5' />
                         <p className='pl-2'>(122)</p>
                     </div>
-                    <p className='mt-5 text-3xl font-medium'>{currency}{productData.price}</p>
-                    <p className='mt-5 text-gray-500 md:w/4/5'>{productData.description}</p>
-                    <div className='flex flex-col gap-4 my-8'>
+                    <p className='mt-5 text-3xl font-medium'>{currency}{productData.productpriceS}</p>
+                    <p className='mt-5 text-gray-500 md:w/4/5'>{productData.productdescription}</p>
+                    {/* <div className='flex flex-col gap-4 my-8'>
                         <p>Select Size</p>
                         <div className='flex gap-2'>
                             {productData.sizes.map((item, index) => (
                                 <button onClick={() => setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-orange-500' : ''}`} key={index}>{item}</button>
                             ))}
                         </div>
-                    </div>
-                    <button onClick={() => addToCart(productData.id, size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+                    </div> */}
+                    <button onClick={() => addToCart(productData.productid)} className='bg-black text-white mt-7 px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
                     <hr className='mt-8 sm:w-4/5' />
                     <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
                         <p>100% Orginal product.</p>
-                        <p>100% Orginal product.</p>
-                        <p>100% Orginal product.</p>
+                        <p>Cash on delivery is available on this product.</p>
+                        <p>Easy return and exchange policy within 7 days.</p>
                     </div>
                 </div>
             </div>
@@ -88,7 +89,7 @@ function Product() {
                 </div>
             </div>
             {/* --------display related product---------- */}
-            <RelatedProduct category={productData.category} subCategory={productData.subCategory} />
+            <RelatedProduct category={productData.categoryid} subCategory={productData.topcategoryid} />
         </div>
     ) : <div className='opacity-0'></div>
 }

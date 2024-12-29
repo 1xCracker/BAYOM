@@ -7,13 +7,13 @@ import ProductItem from './ProductItem';
 
 
 function LastestCollection() {
-    const { products } = useContext(ShopContext);
+    const { productLast } = useContext(ShopContext);
 
     const [lastestProduct, setLastestProduct] = useState([]);
 
     useEffect(() => {
-        setLastestProduct(products.slice(0, 10));
-    }, []);
+        setLastestProduct(productLast.slice(0, 10));
+    }, [productLast]);
     return (
         <div className='my-10'>
             <div className='text-center py-8 text-3xl'>
@@ -26,7 +26,7 @@ function LastestCollection() {
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6 '>
                 {
                     lastestProduct.flatMap((item, index) => (
-                        <ProductItem key={index} id={item.id} image={item.image} name={item.name} price={item.price} />
+                        <ProductItem key={index} id={item.productid} image={item.productimage} name={item.productname} price={item.productpriceS} />
                     ))
                 }
             </div>

@@ -56,7 +56,7 @@ namespace BAYOM.Web.Server.Controllers
 		}
 
 		[HttpPost("TopCategory")]
-		public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategory(int id)
+		public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategory( int id)
 		{
 			var category = await _categorySercive.GetCategory(id);
 			if (category == null)

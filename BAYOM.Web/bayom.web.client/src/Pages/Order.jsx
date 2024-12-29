@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title';
+import { getImageURL } from '../utils/image-util';
 
 function Order() {
-    const { products, currency } = useContext(ShopContext);
+    const { product, currency } = useContext(ShopContext);
     return (
         <div className='border-t pt-16'>
             <div className='text-2xl'>
@@ -11,14 +12,14 @@ function Order() {
             </div>
             <div >
                 {
-                    products.slice(1, 4).map((item, index) => (
+                    product.slice(1, 4).map((item, index) => (
                         <div key={index} className='py-4 border-t border-b text-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
                             <div className='flex items-start gap-6 text-sm'>
-                                <img className='w-16 sm:w-20' src={item.image[0]} alt='' />
+                                <img className='w-16 sm:w-20' src={getImageURL(item.productimage)} alt='' />
                                 <div>
-                                    <p className='sm:text-base font-medium'>{item.name}</p>
+                                    <p className='sm:text-base font-medium'>{item.productname}</p>
                                     <div className='flex items-center gap-3 mt-2 text-base text-gray-700'>
-                                        <p>{currency}{item.price}</p>
+                                        <p>{currency}{item.productpriceS}</p>
                                         <p>Quantity: 1</p>
                                         <p>Size: M</p>
                                     </div>

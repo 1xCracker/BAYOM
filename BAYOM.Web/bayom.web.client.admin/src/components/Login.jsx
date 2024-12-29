@@ -9,8 +9,7 @@ function Login({ setToken }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const onSumbitHandler = async (e) => {
-        console.log(email)
-        console.log(password)
+
         try {
             e.preventDefault();
             const response = await axios.post(`${backendUrl}/api/Users/authenticate`,
@@ -26,13 +25,13 @@ function Login({ setToken }) {
 
             if (response.data.token) {
                 setToken(response.data.token);
-                console.log(response.data.token)
+
             } else {
                 toast.error(response.data.message);
             }
         }
         catch (error) {
-            console.log(error.response?.data);
+
             toast.error(error.message)
         }
 

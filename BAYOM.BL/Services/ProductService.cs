@@ -31,7 +31,7 @@ namespace BAYOM.BL.Services
         public async Task<IEnumerable<Product>> GetProductsLastestAsync()
 		{
 			var entity =await _productRepository.GetAll().ToListAsync();
-			var siralanmis =entity.OrderByDescending(x => x.Productid).Take(5);
+			var siralanmis =entity.OrderByDescending(x => x.Productid).Take(10);
 			return siralanmis;
 		}
 
