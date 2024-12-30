@@ -26,5 +26,10 @@ namespace BAYOM.BL.Services
 			var category = await _repository.GetByQuery(x => x.Topcategoryid == id).ToListAsync();
 			return category;
 		}
-	}
+        public async Task<IEnumerable<Category>> GetAllCategory()
+        {
+            var category = await _repository.GetAll().ToListAsync();
+            return category;
+        }
+    }
 }

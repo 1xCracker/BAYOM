@@ -54,6 +54,21 @@ namespace BAYOM.Web.Server.Controllers
 			}
 			return Ok(topCategoryDto);
 		}
+		[HttpGet("GetAllCategory")]
+		public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategory()
+		{
+			var category =await _categorySercive.GetAllCategory();
+			if (category == null)
+			{
+				return NotFound();
+			}
+			var categorydto = _mapper.Map<IEnumerable<CategoryDto>>(category);
+			if (categorydto == null)
+			{
+				return NotFound();
+			}
+			return Ok(categorydto);
+		}
 
 		[HttpPost("TopCategory")]
 		public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategory( int id)

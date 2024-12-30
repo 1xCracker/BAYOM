@@ -1,4 +1,5 @@
-﻿using BAYOM.EL.Concrete;
+﻿using BAYOM.BL.Dto_s.UserDto_s;
+using BAYOM.EL.Concrete;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,9 @@ namespace BAYOM.BL.Abstract
 	public interface IUserService
 	{
 		Task<User> Authenticate(string email, string password);
-		Task Add(User user);
+		Task<bool> Add(User user,Customer customer);
 		Task Update(User user);
+
+		
 	}
 }

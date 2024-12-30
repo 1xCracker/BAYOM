@@ -10,5 +10,7 @@ namespace BAYOM.BL.Abstract
 	public interface ICategorySercive
 	{
 		Task<IEnumerable<Category>> GetCategory(int id);
-	}
+		Task<IEnumerable<Category>> GetAllCategory();
+
+    }
 }

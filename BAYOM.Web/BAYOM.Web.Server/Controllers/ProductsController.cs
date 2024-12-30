@@ -72,7 +72,7 @@ namespace BAYOM.Web.Server.Controllers
 		}
 
 		[HttpPost("addProduct")]
-		public async Task<ActionResult> AddProduct([FromBody] ProductDto productDto)
+		public async Task<ActionResult> AddProduct([FromForm] ProductDto productDto)
 		{
 			if (productDto == null)
 			{
