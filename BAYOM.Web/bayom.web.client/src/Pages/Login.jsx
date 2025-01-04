@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { backendUrl } from '../App';
 import { toast } from 'react-toastify';
+import { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 
 function Login() {
     const [currencyState, setCurrencyState] = useState('Login');
@@ -11,7 +13,9 @@ function Login() {
     const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
     const [adress, setAdress] = useState('');
-    const [token, setToken] = useState('');
+    const { token, setToken, navigate } = useContext(ShopContext)
+
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
 
@@ -30,7 +34,9 @@ function Login() {
                 );
 
                 if (response.data.token) {
+                    console.log(response.data.token)
                     setToken(response.data.token);
+                    navigate('/Home')
 
                 } else {
                     toast.error(response.data.message);
@@ -75,6 +81,11 @@ function Login() {
     useEffect(() => {
 
     }, [currencyState]);
+    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    }, [token]);
     return (
         <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800'>
             <div className='inline-flex items-center gap-2 mb-2 mt-10'>

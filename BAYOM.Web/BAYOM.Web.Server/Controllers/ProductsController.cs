@@ -70,7 +70,14 @@ namespace BAYOM.Web.Server.Controllers
 			return Ok(product);
 			
 		}
-
+		[HttpGet("GetAllProductWithName")]
+		public async Task<ActionResult<IEnumerable<ProductWithNameDto>>> GetAllProductWithName()
+		{
+			var product =await _productService.GetProductWithName();
+			var productmap = _mapper.Map<IEnumerable<ProductWithNameDto>>(product);
+			return Ok(productmap);
+		}
+		
 		[HttpPost("addProduct")]
 		public async Task<ActionResult> AddProduct([FromForm] ProductDto productDto)
 		{
@@ -105,7 +112,17 @@ namespace BAYOM.Web.Server.Controllers
             }
             return NoContent();
         }
-
+		[HttpDelete("DeleteProduct")]
+		public async Task<ActionResult> DeleteProduct(int id)
+		{
+			var response =await _productService.RemoveByIdAsync(id);
+			if (!response)
+			{
+				return NotFound();
+			}
+			return Ok(response);
+		}
+			 
 
     }
 }

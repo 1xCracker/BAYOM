@@ -13,5 +13,8 @@ namespace BAYOM.BL.Abstract
 	{
 		Task<IEnumerable<Product>> GetProductsLastestAsync();
         Task<bool> AnyAsync(int id);
+		Task<IEnumerable<Product>> GetProductWithName();
+        Task<bool> RemoveByIdAsync(int id);
+
     }
 }

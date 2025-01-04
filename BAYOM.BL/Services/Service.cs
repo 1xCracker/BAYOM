@@ -64,7 +64,11 @@ namespace BAYOM.BL.Services
         public async Task<bool> UpdateAsync(T entity)
         {
             try {
-                 _repository.Update(entity);
+               var response=  _repository.Update(entity);
+                if (!response)
+                {
+                    return false;
+                }
                  await _unitOfWork.CommitAsync();
                 return true;
             }

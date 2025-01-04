@@ -15,6 +15,9 @@ function ShopContextProvider(props) {
     const [productLast, setProductLast] = useState([]);
     const [topCategory, setTopCategory] = useState([]);
     const [productBrand, setProductBrand] = useState([]);
+    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,7 +27,9 @@ function ShopContextProvider(props) {
         topCategoryData();
 
     }, []);
-
+    useEffect(() => {
+        localStorage.setItem('token', token)
+    }, [token])
     const addToCart = async (itemId) => {
         let cartData = structuredClone(cartItems);
 
@@ -85,7 +90,7 @@ function ShopContextProvider(props) {
         currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
         cartItems, addToCart, getCartCount, updateQuantity
-        , getCartAmount, navigate, product, productLast, productBrand, topCategory
+        , getCartAmount, navigate, product, productLast, productBrand, topCategory, token, setToken
     }
 
     return (

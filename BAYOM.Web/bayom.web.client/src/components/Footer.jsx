@@ -8,7 +8,7 @@ function Footer() {
                 <div>
                     <img src={assets.logo} className='mb-5 w-44' alt="" />
                     <p className='w-full md:w-2/3 text-gray-600'>
-                        footer yazısı dsjkjdsfj jdsa jfjsda ıf hsdoıh ff hoasdhf h ıdsh fh oı ıoahsd  hıohaha ıa hfoah dsfjpajs p jasdpfjsdaaaaaaaaaaaaaaaaaaaaaaaaaaaafsffffffffffffffffffffffffffffffffffffffffffffff
+                        Bayotech was established to combine quality, innovation, and reliability in the computer and technology industry, providing customers with a unique shopping experience.
                     </p>
                 </div>
                 <div>

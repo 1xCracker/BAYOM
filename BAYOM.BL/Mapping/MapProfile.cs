@@ -21,6 +21,25 @@ namespace BAYOM.BL.Mapping
             CreateMap<Topcategory, TopCategoryDto>().ReverseMap();
             CreateMap<User ,UserSignUpDto>().ReverseMap();
             CreateMap<Customer, UserSignUpDto>().ReverseMap();
+           
+            
+            
+            
+            
+            
+            
+            CreateMap<Product, ProductWithNameDto>()
+          .ForMember(dest => dest.Productid, opt => opt.MapFrom(src => src.Productid))
+          .ForMember(dest => dest.Productname, opt => opt.MapFrom(src => src.Productname))
+          .ForMember(dest => dest.ProductpriceB, opt => opt.MapFrom(src => src.ProductpriceB))
+          .ForMember(dest => dest.ProductpriceS, opt => opt.MapFrom(src => src.ProductpriceS))
+          .ForMember(dest => dest.Productimage, opt => opt.MapFrom(src => src.Productimage))
+          .ForMember(dest => dest.Categoryid, opt => opt.MapFrom(src => src.Category.Categoryid))
+          .ForMember(dest => dest.Categoryname, opt => opt.MapFrom(src => src.Category.Categoryname))
+          .ForMember(dest => dest.Productbrandid, opt => opt.MapFrom(src => src.Productbrand.Productbrandid))
+          .ForMember(dest => dest.Productbrandname, opt => opt.MapFrom(src => src.Productbrand.Productbrandname))
+          .ForMember(dest => dest.Topcategoryid, opt => opt.MapFrom(src => src.Topcategory.Topcategoryid))
+          .ForMember(dest => dest.Topcategoryname, opt => opt.MapFrom(src => src.Topcategory.Topcategoryname));
         }
         
     }

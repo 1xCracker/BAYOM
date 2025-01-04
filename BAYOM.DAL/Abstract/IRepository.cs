@@ -15,8 +15,9 @@ namespace BAYOM.DAL.Abstract
         Task<T> GetById(int id);
         Task AddAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        void Delete(T entity);
-        void Update(T entity);
+        bool Delete(T entity);
+
+        bool Update(T entity);
 
 
     }

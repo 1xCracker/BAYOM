@@ -9,7 +9,7 @@ namespace BAYOM.DAL.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ModelContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly DbSet<T> _dbSet;
         public Repository(ModelContext context)
         {
             _context = context;
@@ -27,9 +27,19 @@ namespace BAYOM.DAL.Repository
             return productExists;
         }
 
-        public void Delete(T entity)
+        public  bool Delete(T entity)
         {
-            _dbSet.Remove(entity);
+            try
+            {
+                _dbSet.Remove(entity);
+                return true;
+            }
+            catch (Exception) 
+            {
+                return false;
+            }
+
+          
         }
 
         public IQueryable<T> GetAll()
@@ -47,9 +57,19 @@ namespace BAYOM.DAL.Repository
             return _dbSet.Where(expression);
         }
 
-        public void Update(T entity)
+        public  bool Update(T entity)
         {
-            _dbSet.Update(entity);  
+            try
+            {
+                _dbSet.Update(entity);
+            return true;
         }
+            catch (Exception) 
+            {
+                return false;
+            }
+}
+
+      
     }
 }

@@ -14,6 +14,7 @@ namespace BAYOM.BL.Abstract
        
         Task<bool> AddAsync(T entity);
         Task<bool> RemoveAsync(T entity);
+      
         Task<bool> UpdateAsync(T entity);
 
 

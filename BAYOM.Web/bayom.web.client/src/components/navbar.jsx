@@ -5,7 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 function navbar() {
     const [visible, setVisible] = useState(false);
 
-    const { setShowSearch, getCartCount } = useContext(ShopContext);
+    const { setShowSearch, getCartCount, setToken } = useContext(ShopContext);
 
 
     return (
@@ -38,7 +38,7 @@ function navbar() {
                         <div className='flex flex-col gap-2 w-36 py-3 bg-slate-100 text-gray-500 rounded '>
                             <p className='cursor-pointer hover:text-black'>My Profile</p>
                             <p className='cursor-pointer hover:text-black'>Orders</p>
-                            <p className='cursor-pointer hover:text-black'>Logout</p>
+                            <p onClick={() => setToken('')} className='cursor-pointer hover:text-black'>Logout</p>
                         </div>
                     </div>
                 </div>

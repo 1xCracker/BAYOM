@@ -12,11 +12,12 @@ using System.Threading.Tasks;
 
 namespace BAYOM.BL.Services
 {
-	public class ProductService : IProductService
+	public class ProductService :Service<Product> ,IProductService
 	{
-		private readonly IRepository<Product> _productRepository;
+
+		private readonly IProductRepository _productRepository;
 		private readonly IUnitOfWork _unitOfWork;
-		public ProductService(IRepository<Product> productRepository, IUnitOfWork unitOfWork)
+		public ProductService(IProductRepository productRepository, IUnitOfWork unitOfWork):base(productRepository, unitOfWork)
 		{
 			_productRepository = productRepository;
 			_unitOfWork = unitOfWork;
@@ -35,6 +36,28 @@ namespace BAYOM.BL.Services
 			return siralanmis;
 		}
 
-		
+        public async Task<IEnumerable<Product>> GetProductWithName()
+        {
+            var product =await _productRepository.GetProductsWithNameAsync();
+			return product;
+        }
+
+        public async Task<bool> RemoveByIdAsync(int id)
+        {
+			var product = await  _productRepository.GetById(id);
+			if (product == null) 
+			{
+				return false;
+			}
+			var delete =   _productRepository.Delete(product);
+			if (!delete)
+			{
+				return false;
+			}
+			_unitOfWork.Commit();
+			return delete;
+
+
+        }
     }
 }

@@ -20,7 +20,9 @@ function Collection() {
         if (topCategoryFilter.includes(value)) {
             setTopCategoryFilter(prev => prev.filter(item => item !== value));
             setSelectedCategory(null);
+
         } else {
+            setCategoryFilter([])
             setTopCategoryFilter([]);
             setSelectedCategory(value);
             try {
